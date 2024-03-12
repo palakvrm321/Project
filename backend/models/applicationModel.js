@@ -1,0 +1,37 @@
+const { Schema, model, Types } = require("../connection");
+
+const myschema = new Schema({
+  user: { type: Types.ObjectId, ref: "user" },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  dateOfBirth: { type: Date, required: true },
+  email: { type: String, required: true },
+  phoneNumber: { type: String, required: true },
+  street: { type: String, required: true },
+  city: { type: String, required: true },
+  state: { type: String, required: true },
+  pinCode: { type: String, required: true },
+  employerName: { type: String, required: true },
+  jobTitle: { type: String, required: true },
+  income: { type: Number, required: true },
+  bankName: { type: String, required: true },
+  branch: { type: String, required: true },
+  ifscCode: { type: String, required: true },
+  accountNumber: { type: String, required: true },
+  submitDate: Date,
+  status: { type: String, default: "pending" },
+  approvedDate: Date,
+  approvedBy: { type: Types.ObjectId, ref: "bank" },
+  rejectedDate: Date,
+  rejectedBy: { type: Types.ObjectId, ref: "bank" },
+  rejectedReason: String,
+  creditScoreReport: String,
+  creditScore: Number,
+  creditLimit: Number,
+  cardNumber: String,
+  cardType: {type : String, default: 'VISA'},
+  cardExpiry: Date,
+  cardCVV: String,
+});
+
+module.exports = model("application", myschema);
